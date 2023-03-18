@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import blueSoda from "./assets/pepsi001.png";
 import whiteSoda from "./assets/pepsi002.png";
 import blackSoda from "./assets/pepsi003.png";
@@ -9,12 +9,30 @@ import twitter from "./assets/twitter.png";
 import * as S from "./style.js";
 
 export default function App() {
-  const [soda, setSoda] = useState(blueSoda);
-  const [color,setColor] = useState('#0261bf')
+  const [soda, setSoda] = useState(localStorage.getItem("soda"));
+  const [color, setColor] = useState(localStorage.getItem("cor"));
+
+  useEffect(() => {
+    switch (color){
+      case "#0261bf":
+        localStorage.setItem("cor", "#0261bf");
+        localStorage.setItem("soda", blueSoda);
+        break;
+      case "#E60C2D":
+        localStorage.setItem("cor", "#E60C2D");
+        localStorage.setItem("soda", whiteSoda);
+        break;
+      case "#1F1E1F":
+        localStorage.setItem("cor", "#1F1E1F");
+        localStorage.setItem("soda", blackSoda);
+        break;
+    }
+  });
+
   return (
     <>
       <S.GlobalStyle />
-      <S.ColorBox style={{backgroundColor:color}}>
+      <S.ColorBox style={{ backgroundColor: color }}>
         <S.Header>
           <S.LogoImage src={logo} alt="" />
           <S.NavHeader>
@@ -45,25 +63,37 @@ export default function App() {
           </S.ImageBox>
           <S.SocialMediaBox>
             <S.FigureSocialMedia>
-            <S.SocialMediaImage src={facebook} alt="" />
-            <S.SocialMediaImage src={twitter} alt="" />
-            <S.SocialMediaImage src={instagram} alt="" />
+              <S.SocialMediaImage src={facebook} alt="" />
+              <S.SocialMediaImage src={twitter} alt="" />
+              <S.SocialMediaImage src={instagram} alt="" />
             </S.FigureSocialMedia>
           </S.SocialMediaBox>
         </S.Main>
         <S.ChangeBox>
-          <img src={blueSoda} onClick={()=>{
-            setColor('#0261bf')
-            setSoda(blueSoda)
-          }} alt="" />
-          <img src={whiteSoda} onClick={()=>{
-            setColor('#E60C2D')
-            setSoda(whiteSoda)
-          }} alt="" />
-          <img src={blackSoda} onClick={()=>{
-            setColor('#1F1E1F')
-            setSoda(blackSoda)
-          }} alt="" />
+          <img
+            src={blueSoda}
+            onClick={() => {
+              setColor("#0261bf");
+              setSoda(blueSoda);
+            }}
+            alt=""
+          />
+          <img
+            src={whiteSoda}
+            onClick={() => {
+              setColor("#E60C2D");
+              setSoda(whiteSoda);
+            }}
+            alt=""
+          />
+          <img
+            src={blackSoda}
+            onClick={() => {
+              setColor("#1F1E1F");
+              setSoda(blackSoda);
+            }}
+            alt=""
+          />
         </S.ChangeBox>
       </S.ColorBox>
     </>
