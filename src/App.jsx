@@ -13,7 +13,7 @@ export default function App() {
   const [color, setColor] = useState(localStorage.getItem("cor"));
 
   useEffect(() => {
-    switch (color){
+    switch (color) {
       case "#0261bf":
         localStorage.setItem("cor", "#0261bf");
         localStorage.setItem("soda", blueSoda);
@@ -27,8 +27,8 @@ export default function App() {
         localStorage.setItem("soda", blackSoda);
         break;
       default:
-        localStorage.setItem("cor", "#0261bf");
-        localStorage.setItem("soda", blueSoda);
+        setSoda(blueSoda);
+        setColor("#0261bf");
     }
   });
 
@@ -100,5 +100,4 @@ export default function App() {
         </S.ChangeBox>
       </S.ColorBox>
     </>
-  );
-}
+  )}
