@@ -26,6 +26,9 @@ export default function App() {
         localStorage.setItem("cor", "#1F1E1F");
         localStorage.setItem("soda", blackSoda);
         break;
+      default:
+        localStorage.setItem("cor", "#0261bf");
+        localStorage.setItem("soda", blueSoda);
     }
   });
 
